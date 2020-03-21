@@ -66,3 +66,17 @@ var question4 =
    document.getElementById("choices4").innerHTML = question4.choiceA + question4.choiceB + question4.choiceC + question4.choiceD;
    
 
+
+   // Create interval timer
+   var timeLimit = 30;
+
+   var myTimer = setInterval(intervalAction, 1000);
+   
+   function intervalAction() {
+       document.getElementById("timer").innerHTML = timeLimit;
+       if (timeLimit === 0) {
+           document.getElementById("timer").innerHTML = "Time is up!";
+           clearInterval(myTimer);
+       }
+       timeLimit--;
+   }

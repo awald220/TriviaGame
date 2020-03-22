@@ -1,8 +1,8 @@
 // # Word-Guess-Game
-
+// 0. users click start begin the game 
 // 1. the user sees the questions 
 // 2. when the user presses any key the timer begins to count down
-// 3. the user goes throught the questions and answers them 
+// 3. the user goes through the questions and answers them 
 // 4. when the timer goes off the results page pops up
 // 6. the user sees how many questions they got correct/incorrect
 // 7. the game is over at this point it does not reset
@@ -10,65 +10,67 @@
 
 
 // Create an array with an object full of questions.
-var question1 =
+var myQuestions = [
     {
         question: "What was the name of Ross's pet monkey?",
-        choiceA: "Marcel ",
-        choiceB: "George ",
-        choiceC: "Marty ",
-        choiceD: "King Kong ",
-        correct: "A"
-    };
+        answers:[
+            "Marcel", 
+            "George",
+            "King Kong",
+            "Malik"
+        ],
+        correctAnswer: "Marcel"
+    },
 
-var question2 =
     {
         question: "Which character has a twin sister?",
-        choiceA: "Rachel ",
-        choiceB: "Joey ",
-        choiceC: "Monica ",
-        choiceD: "Phoebe ",
-        correct: "D"
-    };
 
-var question3 =
+            answers:[
+                "Joey",
+                "Phoebe",
+                "Rachel",
+                "Chandler"
+            ],
+        correctAnswer: "Phoebe"
+    },
+
+
     {
         question: "What is the name of the coffe shop that the group hangs out at?",
-        choiceA: "Beyond the Daily Grind ",
-        choiceB: "Central Perk ",
-        choiceC: "Java Joes ",
-        choiceD: "Starbucks ",
-        correct: "B"
-    };
+        answers:[
+            "Java Joe's",
+            "Central Perk",
+            "Starbucks",
+            "Beyond the Daily Grind"
+        ],
+        correctAnswer: "Central Perk"
+    },
 
-var question4 = 
     {
         question: "What is the name of Ross and Monica's father?",
-        choiceA: "Carl ",
-        choiceB: "Richard ",
-        choiceC: "Jack ",
-        choiceD: "Frank ",
-        correct: "C"
-    };
+        answers:[
+            "Richard",
+            "Marcus",
+            "Jack",
+            "Frank"
+        ],
+        correctAnswer: "Jack"
+    }
+]
+   console.log(myQuestions.length);
+   $("#questionContainer").hide()
 
-   console.log(question1.question);
-   
-   // Display questions and options to users screen
-   document.getElementById("question1").innerHTML = question1.question;
-   document.getElementById("choices1").innerHTML = question1.choiceA + question1.choiceB + question1.choiceC + question1.choiceD;
+    $("#buttonContainer").on("click", function(){
+        console.log("hello")
 
-   document.getElementById("question2").innerHTML = question2.question;
-   document.getElementById("choices2").innerHTML = question2.choiceA + question2.choiceB + question2.choiceC + question2.choiceD;
+        $("#buttonContainer").hide()
+        $("#questionContainer").show()
+        startGame()
+    })
 
-   document.getElementById("question3").innerHTML = question3.question;
-   document.getElementById("choices3").innerHTML = question3.choiceA + question3.choiceB + question3.choiceC + question3.choiceD;
-
-   document.getElementById("question4").innerHTML = question4.question;
-   document.getElementById("choices4").innerHTML = question4.choiceA + question4.choiceB + question4.choiceC + question4.choiceD;
-   
-
-
-   // Create interval timer
-   var timeLimit = 30;
+    function startGame(){
+       // Create interval timer
+   var timeLimit = 60;
 
    var myTimer = setInterval(intervalAction, 1000);
    
@@ -80,3 +82,41 @@ var question4 =
        }
        timeLimit--;
    }
+
+  }
+
+    for (var i = 0; i < myQuestions.length; i++) {
+        console.log(myQuestions[i].question)
+      var newQuestionBlock =  $("<div>")
+      newQuestionBlock.addClass("questionBlock")
+      var currentQuestionText = $("<p>")
+      currentQuestionText.text(myQuestions[i].question)
+      newQuestionBlock.append(currentQuestionText)
+     
+
+     for (var j = 0; j < myQuestions.length; j++) {
+         console.log(myQuestions[j].answers)
+         var newAnswerBlock = $("<div>")
+         newAnswerBlock.addClass("answerBlock")
+         var currentAnswerText = $("<p>")
+         currentAnswerText.text(myQuestions[j].answers)    
+         newAnswerBlock.append(newQuestionBlock)     
+     }
+
+     $("#questionDisplay").append(newQuestionBlock)
+    }
+
+
+
+    // needs to appends answerBlock to questionBlock but essencially do the same thing 
+//     <div class="questionBlock">
+//     <p>what is color is the sun?</p>
+  
+//     <input type="radio" id="answer1"
+//     name="question1" value="yellow">
+//    <label for="contactChoice1">yellow</label>
+
+//    <input type="radio" id="answer2"
+//       name="question1" value="green">
+//     <label for="contactChoice1">green</label>
+// </div>

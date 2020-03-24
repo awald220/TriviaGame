@@ -1,122 +1,73 @@
-// # Word-Guess-Game
-// 0. users click start begin the game 
-// 1. the user sees the questions 
-// 2. when the user presses any key the timer begins to count down
-// 3. the user goes through the questions and answers them 
-// 4. when the timer goes off the results page pops up
-// 6. the user sees how many questions they got correct/incorrect
-// 7. the game is over at this point it does not reset
+$(document).ready(function(){
 
-
-
-// Create an array with an object full of questions.
-var myQuestions = [
+     // array of objects with the questions, possible answers, and the correct answer
+  var questionBank =
+  [
     {
-        question: "What was the name of Ross's pet monkey?",
-        answers:[
-            "Marcel", 
-            "George",
-            "King Kong",
-            "Malik"
-        ],
-        correctAnswer: "Marcel"
+      question: "What is the name of Ross's pet monkey?",
+      answers: ["Marcel", "Jack", "Gerorge", "King Kong"],
+      correct: "Marcel"
     },
-
-    {
-        question: "Which character has a twin sister?",
-
-            answers:[
-                "Joey",
-                "Phoebe",
-                "Rachel",
-                "Chandler"
-            ],
-        correctAnswer: "Phoebe"
-    },
-
-
-    {
-        question: "What is the name of the coffe shop that the group hangs out at?",
-        answers:[
-            "Java Joe's",
-            "Central Perk",
-            "Starbucks",
-            "Beyond the Daily Grind"
-        ],
-        correctAnswer: "Central Perk"
-    },
-
-    {
-        question: "What is the name of Ross and Monica's father?",
-        answers:[
-            "Richard",
-            "Marcus",
-            "Jack",
-            "Frank"
-        ],
-        correctAnswer: "Jack"
-    }
-]
-   console.log(myQuestions.length);
-   $("#questionContainer").hide()
-
-    $("#buttonContainer").on("click", function(){
-        console.log("hello")
-
-        $("#buttonContainer").hide()
-        $("#questionContainer").show()
-        startGame()
-    })
-
-    function startGame(){
-       // Create interval timer
-   var timeLimit = 60;
-
-   var myTimer = setInterval(intervalAction, 1000);
-   
-   function intervalAction() {
-       document.getElementById("timer").innerHTML = timeLimit;
-       if (timeLimit === 0) {
-           document.getElementById("timer").innerHTML = "Time is up!";
-           clearInterval(myTimer);
-       }
-       timeLimit--;
-   }
-
-  }
-
-    for (var i = 0; i < myQuestions.length; i++) {
-        console.log(myQuestions[i].question)
-      var newQuestionBlock =  $("<div>")
-      newQuestionBlock.addClass("questionBlock")
-      var currentQuestionText = $("<p>")
-      currentQuestionText.text(myQuestions[i].question)
-      newQuestionBlock.append(currentQuestionText)
-     
-
-     for (var j = 0; j < myQuestions.length; j++) {
-         console.log(myQuestions[j].answers)
-         var newAnswerBlock = $("<div>")
-         newAnswerBlock.addClass("answerBlock")
-         var currentAnswerText = $("<p>")
-         currentAnswerText.text(myQuestions[j].answers)    
-         newAnswerBlock.append(newQuestionBlock)     
-     }
-
-     $("#questionDisplay").append(newQuestionBlock)
-    }
-
-
-
-    // needs to appends answerBlock to questionBlock but essencially do the same thing 
-//     <div class="questionBlock">
-//     <p>what is color is the sun?</p>
   
-//     <input type="radio" id="answer1"
-//     name="question1" value="yellow">
-//    <label for="contactChoice1">yellow</label>
+    {
+      question: "Which character has a twin sister?",
+      answers: ["Rachel", "Joey", "Phoebe", "Chandler"],
+      correct: "Phoebe"
+    },
+    {
+      question: "What is the name of Ross and Monica's Father?",
+      answers: ["Frank", "Jack", "Richard", "Joe"],
+      correct: "Jack"
+    },
+    {
+      question: "What is the name of the coffee shop?",
+      answers: ["Central Perk", "Java Joe's", "Starbucks", "Beyond the Daily Grind"],
+      correct: "Central Perk"
+    },
+    {
+      question: "How many times has Ross been married?",
+      answers: ["1", "2", "3", "4"],
+      correct: "3"
+    },
+    {
+      question: "What is Phoebe's most popular song?",
+      answers: ["Sticky Shoes", "Smelly Cat", "The Cow in the Meadow", "Parading Goats"],
+      correct: "Smelly Cat"
+    },
+  ]
 
-//    <input type="radio" id="answer2"
-//       name="question1" value="green">
-//     <label for="contactChoice1">green</label>
-// </div>
+   // functions to handle the building questions page and scoring
+  var trivia = {
+  
+    // pull questions from the array of questions, loop through them, and append to UI
+    displayQuestions: function() {
+      var divContainer = $("#questions-box");
+      var answerGroup = $(".form-check");
+      divContainer.append('<h2>Answer the following questions:</h2>');
+              
+      for (var i = 0; i < questionBank.length; i++) {
+  
+        // Display the questions to the users screen
+        divContainer.append('<div id="question">' + questionBank[i].question + '</div>');
+  
+        // Declare vars for each one of the possibe answers
+        var answer1 = questionBank[i].answers[0];
+        var answer2 = questionBank[i].answers[1];
+        var answer3 = questionBank[i].answers[2];
+        var answer4 = questionBank[i].answers[3];
+  
+        // Show the answers as radio buttons
+        divContainer.append('<div class="form-check"><input class="form-check-input" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="form-check-label" id="radio'+i+'label" for="radio'+i+'">' + answer1 + '</label></div>');
+        divContainer.append('<div class="form-check"><input class="form-check-input" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="form-check-label" id="radio'+i+'label" for="radio'+i+'">' + answer2 + '</label></div>');
+        divContainer.append('<div class="form-check"><input class="form-check-input" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="form-check-label" id="radio'+i+'label" for="radio'+i+'">' + answer3 + '</label></div>');
+        divContainer.append('<div class="form-check"><input class="form-check-input" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="form-check-label" id="radio'+i+'label" for="radio'+i+'">' + answer4 + '</label></div>');
+      }
+  
+      // Done Button for when the user finishes before the time is up 
+      var doneButton = '<button class="btn btn-primary" id="done-button" type="submit">Done</button>';
+      divContainer.append(doneButton);
+      $("#done-button").on("click", gameState.stopTimer);
+    },
+  
+   
+ 

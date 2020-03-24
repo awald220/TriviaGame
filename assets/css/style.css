@@ -31,34 +31,6 @@ body {
     padding: 20px;
 }
 
-#question1 {
-    padding: 5px;
-}
-
-#choices1 {
-    padding: 5px;
-}
-
-#question2 {
-    padding: 5px;
-}
-
-#choices2 {
-    padding: 5px;
-}
-
-#question3 {
-    padding: 5px;
-}
-
-#choices3 {
-    padding: 5px;
-}
-
-#question4{
-    padding: 5px;
-}
-
-#choices4 {
-    padding: 5px;
+.questionBlock {
+    padding: 10px;
 }

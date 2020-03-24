@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Trivia Game</title>
 </head>
-<body background="assets/images/images.jpeg">
+<body backgroun="assets/images/\images.jpeg">
    
-    <div class="content">
+    <!-- <div class="content">
         <h1>The One With The Trivia!</h1>
 
         <div id="buttonContainer">
@@ -27,7 +27,60 @@
         </div>
        </div>
 
-    </div>
+    </div> -->
+
+    <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <img src="assets/images/simpsons-logo.svg" class="img-fluid text-center" id="main-logo" alt="Simpsons logo">
+            <h1 class="display-3">Trivia Game</h1>
+            <hr>
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-md-3">
+            <img src="assets/images/simpsons-family.png" class="img-fluid text-center" id="family-photo" alt="Simpsons family photo">
+            <div>
+              <h3 id="timer"></h3>
+            </div>
+          </div>
+    
+          <div class="offset-md-1"></div>
+    
+          <div class="col-md-8">
+            <div id="start-page" class="start-page-text">
+              <h2>Get ready to play</h2>
+              <p>Test your knowledge of <i>The Simpsons</i> with this multiple choice trivia game. You have 60 seconds to answer all the questions and the game ends automatically when time has elapsed. Good luck!</p>
+              <div class="btn btn-primary" id="start-button">Start
+              </div>
+            </div>
+    
+          <div>
+            <div id="questions-box">
+            </div>
+          </div>
+    
+            <div class="hidden" id="end-page">
+              <h2>Here are your scores:</h2>
+              <p id="correct-answers"></p>
+              <p id="incorrect-answers"></p>
+              <p id="unanswered"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <footer class="footer">
+        <div class="container-fluid">
+          <hr>
+          <span class="text-center">
+            <p>&copy; Copyright 2018 Rhonda Glennon</p>
+            <p id="copyright-small" class="text-muted">Images featuring <i>The Simpsons</i> are the property of their respective owners.</p></span>
+          </div>
+        </footer>
+    
+
 
     <script
     src="https://code.jquery.com/jquery-3.4.1.js"
@@ -36,4 +89,4 @@
     <script src="assets/javascript/app.js"></script>
     
 </body>
-</html>
+</html>x1

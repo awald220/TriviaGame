@@ -115,7 +115,7 @@
     displayQuestions: function() {
       var divContainer = $("#questions-box");
       var answerGroup = $(".form-check");
-      divContainer.append('<h2>How well do you know Friends?</h2>');
+      
               
       for (var i = 0; i < questionBank.length; i++) {
   

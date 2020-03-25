@@ -38,6 +38,21 @@
       answers: ["Chandler", "Ross", "Phoebe", "Joey"],
       correct: "Joey"
     },
+    {
+      question: "What is Chandler's middle name?",
+      answers: ["Matthew", "Carry", "Muriel", "Robin"],
+      correct: "Muriel"
+    },
+    {
+      question: "What is Monica's job?",
+      answers: ["Chef", "Waitress", "Chiropractor", "Teacher"],
+      correct: "Chef"
+    },
+    {
+      question: "Who is Gunther in love with?",
+      answers: ["Monica", "Ross", "Phoebe", "Rachel"],
+      correct: "Rachel"
+    },
   ];
 
 

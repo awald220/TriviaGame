@@ -13,3 +13,8 @@ THE GAME CODE
 the timer should hide the start page and when it runs out the results page should show up
 5. set a function that determines how many question where anwers correctly/incorrectly or missed and push the results to the screen.
 6. there needs to be a done button for if the questions are answered before the timer goes off 
+
+
+#Link to Project
+
+https://awald220.github.io/TriviaGame/
